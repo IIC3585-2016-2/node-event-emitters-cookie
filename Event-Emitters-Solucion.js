@@ -9,13 +9,13 @@ var emitterA = new events.EventEmitter();
 function EventListener( name ) {
   console.log( 'new event listener, name=' + name );
   this.name = name;
-  this.ack = function() {
-    console.log( this.name + ' just heard testA' );
+  this.ack = function(test) {
+    console.log( this.name + ' just heard ' + test );
   };
   this.listenTo = function( event, emitter ) {
     var self = this;
     emitter.on( event, function() {
-      self.ack();
+      self.ack(event);
     } );
   };
 }
