@@ -1,5 +1,14 @@
 # Event emitters
 
+
+```javascript
+// Importa el modulo 'events'
+var events = require('events');
+// Crear un Event Emitter
+var eventEmitter = new events.EventEmitter();
+
+```
+
 ## Métodos
 
 ### addListener y emit
