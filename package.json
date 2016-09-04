@@ -1,0 +1,27 @@
+{
+  "name": "node-event-emitters-cookie",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Event-Emitters.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IIC3585-2016-2/node-event-emitters-cookie.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IIC3585-2016-2/node-event-emitters-cookie/issues"
+  },
+  "homepage": "https://github.com/IIC3585-2016-2/node-event-emitters-cookie#readme",
+  "dependencies": {
+    "eslint": "^3.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.4.0",
+    "eslint-plugin-react": "^6.2.0"
+  }
+}
