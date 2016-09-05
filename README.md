@@ -2,7 +2,7 @@
 
 Node.js usa event-driven lo que hace que este sea tan rápido, solo debe comenzar el servidor, iniciar variables, declarar funciones y esperar a que los eventos ocurran. 
 
-Node tiene multiples eventos integrados disponibles a través del modulo de eventos y la clase EventEmitter, la que permite que cierto tipo de objetivos, llamados "emitters", emitan eventos nombrados los cuales llamarán a funciones (listeners). Cuando el EventEmitter emite un evento, toda las funciones unidas/asociadas a ese evento son llamadas de manera síncrona. 
+Node tiene multiples eventos integrados disponibles a través del modulo de eventos y la clase EventEmitter, la que permite que cierto tipo de objetos, llamados "emitters", emitan eventos los cuales llamarán a funciones (listeners). Cuando el EventEmitter emite un evento, toda las funciones unidas/asociadas a ese evento son llamadas de manera síncrona. 
 
 Para utilizar EventEmitter es necesario importar el modulo 'events' y crear una instancia de este.
 
@@ -108,5 +108,29 @@ eventEmitter.emit('doorOpen');
 
 En este caso se eliminaran todos los listener asociados a eventName, o bien, aquellos específicados en un arreglo que se entrega como parámetro. 
 
+
+
+```javascript
+const myEmitter = new MyEmitter();
+myEmitter.on('event', function(a, b) {
+  console.log(a, b, this);
+    // Prints:
+    //   a b MyEmitter {
+    //     domain: null,
+    //     _events: { event: [Function] },
+    //     _eventsCount: 1,
+    //     _maxListeners: undefined }
+});
+myEmitter.emit('event', 'a', 'b');
+````
+
+```javascript
+const myEmitter = new MyEmitter();
+myEmitter.on('event', (a, b) => {
+  console.log(a, b, this);
+    // Prints: a b {}
+});
+myEmitter.emit('event', 'a', 'b');
+````
 
 
