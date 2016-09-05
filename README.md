@@ -1,3 +1,14 @@
+# Node - Event Emitters
+
+[Slides](./EventEmitters.pdf) 
+
+## Integrantes
+
+Nombre|Mail
+------------|-------------
+Gabriel Cuchacovich | gacuchac@uc.cl
+Daniela Quiroz | daquiroz@uc.cl
+
 # Event emitters
 
 Node.js usa event-driven lo que hace que este sea tan rápido, solo debe comenzar el servidor, iniciar variables, declarar funciones y esperar a que los eventos ocurran. 
