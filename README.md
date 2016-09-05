@@ -108,7 +108,33 @@ eventEmitter.emit('doorOpen');
 
 En este caso se eliminaran todos los listener asociados a eventName, o bien, aquellos específicados en un arreglo que se entrega como parámetro. 
 
+## emitter.prependListener(eventName, listener)
 
+Con este método se puede agregar un listener a eventName para ser ejecutado antes que todos los listener suscritos a ese evento, es decir agregandolo en el comienzo del arreglo de listeners.
+
+## emitter.prependOnceListener(eventName, listener)
+
+Agregará el listener a eventName como primer listener del arreglo, pero solo una vez.
+
+## emitter.eventNames()
+
+Entrega todos los eventos asociados a ese EventEmitter.
+
+## emitter.listeners(eventName)
+
+Entrega un arreglo con los nombres de todos los listeners asociados a ese eventName de emitter.
+
+## emitter.listenerCount(eventName)
+
+Retorna la cantidad de listeners asociados a eventName.
+
+# Consideraciones con número máximo de listeners
+
+Por defecto el número máximo de listeners que pueden ser suscritos a un evento son 10, para cambiar esto es necesario modificar la cantidad máxima mediante el método emitter.setMaxListeners(n), donde n sera el nuevo número máximo de listeners. Para consultar el número máximo se utiliza el método emitter.getMaxListeners(). Por otro lado, si se quiere cambiar el número máximo para todas las instancias de EventEmitter se puede utilizar la property EventEmitter.defaultMaxListeners, se debe tener precacuión con esto ya que modificará todos los eventos de EventEmitter, incluso los declarados anteriormente.
+
+# Consideraciones con Array Functions
+
+Es posible suscribir listener a un evento usando array functions, pero se debe tener cuidado ya que el contexto será diferente. En los siguientes ejemplos se puede observar esto, en el primer caso no se usa array functions y cuando entramos a esta función, debido a que se gatillo usando el método emit el cual es llamado por nuestro EventEmitter 'myEmitter', por lo que this corresponderá precisamente a dicho EventEmitter. Por otro, en el segundo caso, donde se usan array functions el contexto será esta función.
 
 ```javascript
 const myEmitter = new MyEmitter();
@@ -133,12 +159,3 @@ myEmitter.on('event', (a, b) => {
 myEmitter.emit('event', 'a', 'b');
 ````
 
-```javascript
-const myEmitter = new MyEmitter();
-myEmitter.on('event', (a, b) => {
-  setImmediate(() => {
-    console.log('this happens asynchronously');
-  });
-});
-myEmitter.emit('event', 'a', 'b');
-```
